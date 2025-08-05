@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Gambar + Nota</title>
+  <link rel="stylesheet" href="style(about).css">
+</head>
+<body>
+
+  <!-- Bahagian Header -->
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="https://i.postimg.cc/02vQ6Zrw/logo-png.png" class="logo">
+
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+       <ul class="nav-links" id="navLinks">
+          <div class="close-icon" onclick="toggleMenu()">✕</div>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li class="dropdown-container">
+            <a href="#">GALLERY ▼</a>
+            <ul class="dropdown">
+              <li><a href="galeri-suami.html">Gambar untuk Suami</a></li>
+              <li><a href="galeri-isteri.html">Gambar untuk Isteri</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Bahagian Konten -->
+  <section class="modern-section">
+    <div class="left-column">
+      <div class="image-card">
+        <img src="gambar/IMG-20250804-WA0019_1.jpg" class="image-1">
+      </div>
+      <div class="text-content">
+        <h2>MOHAMMAD FARIEZ FAHMI BIN MOHD RAFINOOR<br>♡Lovely Future Husband♡</h2>
+        <ul>
+          <li>29/12/2006</li>
+          <li>061229-10-****</li>
+          <li>Purple, Ayam goreng, Badminton</li>
+          <li>Suka workout, suka botam, suka isterinya♡</li>
+          <li>011-64200511</li>
+          <li>No.5 Jalan Kampong Lombong 29/50, Seksyen 29/40460 Shah Alam, Selangor</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="text-content">
+        <h2>SITI ROSALINDA BINTI ROSLAN<br>♡Lovely Future Wife♡</h2>
+        <ul>
+          <li>14/03/2005</li>
+          <li>050314-13-****</li>
+          <li>Purple, Ayam goreng, Badminton</li>
+          <li>Suka capybara, suka novel, suka suaminya♡</li>
+          <li>011-70738362</li>
+          <li>259 J Kampung Pulo Hilir, Lorong 7K, Petra Jaya, 93050, Kuching, Sarawak</li>
+        </ul>
+      </div>
+      <div class="image-card">
+        <img src="gambar/IMG_20250621_211837_424.webp" alt="image-2">
+      </div>
+    </div>
+  </section>
+  
+  <!-- Elfsight Background Music -->
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-4f3c8741-1149-42c1-af14-7dac34f9b5f6" data-elfsight-app-lazy></div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+
+  <script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const navLinks = document.querySelector('.nav-links');
+  const closeIcon = document.querySelector('.close-icon');
+
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.add('show');
+  });
+
+  closeIcon.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>

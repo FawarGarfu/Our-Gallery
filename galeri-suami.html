@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Gambar + Nota</title>
+  <link rel="stylesheet" href="galeri-suami.css">
+</head>
+<body>
+
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="https://i.postimg.cc/02vQ6Zrw/logo-png.png" class="logo">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+        <ul class="nav-links" id="navLinks">
+          <div class="close-icon" onclick="toggleMenu()">✕</div>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li class="dropdown-container">
+            <a href="#" id="gallery-toggle">GALLERY ▼</a>
+            <ul class="dropdown" id="gallery-dropdown">
+              <li><a href="galeri-suami.html">Gambar untuk Suami</a></li>
+              <li><a href="galeri-isteri.html">Gambar untuk Isteri</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <h2>݁ꕤ₊ ⊹ . ݁˖ . ݁·Gallery Khas Sang Suami ₊ ⊹ . ݁˖ . ݁·ꕤ</h2>
+  <input type="file" id="fileInput"><br><br>
+  <input type="text" id="noteInput" placeholder="Masukkan nota gambar"><br><br>
+  <button onclick="uploadGambar()">Upload</button>
+
+  <h3>Galeri Anda</h3>
+  <div id="galeri-suami"></div>
+
+  <!-- Elfsight Music -->
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-4f3c8741-1149-42c1-af14-7dac34f9b5f6" data-elfsight-app-lazy></div>
+
+  <!-- JavaScript Galeri -->
+  <script>
+    const galeri = document.getElementById('galeri-suami');
+    const fileInput = document.getElementById('fileInput');
+    const noteInput = document.getElementById('noteInput');
+
+    function uploadGambar() {
+      const file = fileInput.files[0];
+      const nota = noteInput.value.trim();
+
+      if (!file) {
+        alert("Sila pilih gambar.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataURL = e.target.result;
+        const item = { img: dataURL, note: nota };
+
+        const data = JSON.parse(localStorage.getItem('galeriSuamiOnly')) || [];
+        data.push(item);
+        localStorage.setItem('galeriSuamiOnly', JSON.stringify(data));
+
+        tambahGambar(item, data.length - 1);
+        fileInput.value = "";
+        noteInput.value = "";
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function tambahGambar(item, index) {
+      const container = document.createElement('div');
+      container.className = 'gambar-container';
+
+      const img = document.createElement('img');
+      img.src = item.img;
+
+      const nota = document.createElement('p');
+      nota.textContent = item.note || "(Tiada nota)";
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '✕';
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.onclick = function() {
+        padamGambar(index);
+      };
+
+      container.appendChild(img);
+      container.appendChild(nota);
+      container.appendChild(deleteBtn);
+      galeri.appendChild(container);
+    }
+
+    function padamGambar(index) {
+      let data = JSON.parse(localStorage.getItem('galeriSuamiOnly')) || [];
+      data.splice(index, 1);
+      localStorage.setItem('galeriSuamiOnly', JSON.stringify(data));
+      galeri.innerHTML = '';
+      data.forEach((item, i) => tambahGambar(item, i));
+    }
+
+    window.addEventListener('load', () => {
+      const data = JSON.parse(localStorage.getItem('galeriSuamiOnly')) || [];
+      data.forEach((item, index) => tambahGambar(item, index));
+    });
+
+    // Navigation menu logic
+    const navLinks = document.getElementById('navLinks');
+    function toggleMenu() {
+      navLinks.classList.toggle('show');
+    }
+
+    // Dropdown toggle untuk mobile
+    document.addEventListener('DOMContentLoaded', () => {
+      const galleryToggle = document.getElementById('gallery-toggle');
+      const dropdownMenu = document.getElementById('gallery-dropdown');
+
+      galleryToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>

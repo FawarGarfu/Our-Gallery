@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Gambar + Nota</title>
+  <link rel="stylesheet" href="style(home).css">
+</head>
+<body>
+
+  <header id="header">
+    <div class="container">
+      <nav>
+        <img src="https://i.postimg.cc/02vQ6Zrw/logo-png.png" class="logo">
+
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+        <ul class="nav-links" id="navLinks">
+          <div class="close-icon" onclick="toggleMenu()">✕</div>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li class="dropdown-container">
+            <a href="#">GALLERY ▼</a>
+            <ul class="dropdown">
+              <li><a href="galeri-suami.html">Gambar untuk Suami</a></li>
+              <li><a href="galeri-isteri.html">Gambar untuk Isteri</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-section">
+    <div class="content-wrapper">
+    <div class="header-text">
+      <h1>₊✩‧₊˚౨ৎ˚₊✩‧₊<br>WELCOME TO<br>OUR GALLERY<br>₊✩‧₊˚౨ৎ˚₊✩‧₊</h1>
+      <p>Disini tersimpan segala memori kita bersama.</p>
+    </div>
+    <div class="cute-image">
+    <img src="file:///C:/Users/USER/Documents/We/Web2/gambar/download__3_-removebg-preview.png" alt="Pelukan">
+  </div>
+  </div>
+  </div>
+
+  <!-- Elfsight Background Music -->
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-4f3c8741-1149-42c1-af14-7dac34f9b5f6" data-elfsight-app-lazy></div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+
+  <script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const navLinks = document.querySelector('.nav-links');
+  const closeIcon = document.querySelector('.close-icon');
+
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.add('show');
+  });
+
+  closeIcon.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+</script>
+
+
+</body>
+</html>
